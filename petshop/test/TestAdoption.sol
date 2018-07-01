@@ -36,7 +36,7 @@ contract TestAdoption {
         // コントラクトに格納されているペットIDとそのオーナーを全件取得
         address[16] memory adopters = adoption.getAdopters();
 
-        // ペットID 8番にテスト時おコントラクト実行者のEthereumアドレスが格納されているか確認
+        // ペットID 8番にテスト時のコントラクト実行者のEthereumアドレスが格納されているか確認
         Assert.equal(adopters[8], expected, "Owner of pet ID 8 should be recorded.");
     }
 }

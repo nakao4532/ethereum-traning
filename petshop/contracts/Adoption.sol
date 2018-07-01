@@ -7,7 +7,7 @@ contract Adoption {
     // public: 公開権限(private/public/internal/external)
     address[16] public adopters;
 
-    // adopt: 指定したペットを採用扱いにする
+    // adopt(): 指定したペットを採用扱いにする
     // function 関数名(引数) 公開権限 return 返り値の型
     function adopt(uint petId) public returns (uint) {
         // require: 変数の確認
@@ -18,4 +18,11 @@ contract Adoption {
 
         return petId;
     }
+
+    // getAdopters(): 現在のペットの採用状況を返す
+    //                初期値以外のアドレスが格納されている箇所が採用済み
+    function getAdopters() public view returns (address[16]) {
+        return adopters;
+    }
 }
+

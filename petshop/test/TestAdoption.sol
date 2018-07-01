@@ -27,4 +27,16 @@ contract TestAdoption {
 
         Assert.equal(adopter, expected, "Owner of pet ID 8 should be recorded.");
     }
+
+    // getAdopters()の動作確認
+    function testGetAdopterAddressByPetIdInArray() public {
+        // テスト時のコントラクト実行者のEthereuemアドレスを取得
+        address expected = this;
+
+        // コントラクトに格納されているペットIDとそのオーナーを全件取得
+        address[16] memory adopters = adoption.getAdopters();
+
+        // ペットID 8番にテスト時おコントラクト実行者のEthereumアドレスが格納されているか確認
+        Assert.equal(adopters[8], expected, "Owner of pet ID 8 should be recorded.");
+    }
 }

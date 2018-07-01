@@ -5,6 +5,14 @@ import "truffle/DeployedAddresses.sol"; // コントラクトのテスト用イ�
 import "../contracts/Adoption.sol"; // 
 
 contract TestAdoption {
-  Adoption adoption = Adoption(DeployedAddresses.Adoption());
+    Adoption adoption = Adoption(DeployedAddresses.Adoption());
 
+    // adopt()関数の動作確認
+    function testUserCanAdoptPet() public {
+        uint returnedId = adoption.adopt(8);
+
+        uint expected = 8;
+
+        Assert.equal(returnedId, expected, "Adoption of pet ID 8 should be recorded.");
+    }
 }

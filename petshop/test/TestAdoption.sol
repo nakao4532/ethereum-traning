@@ -5,6 +5,7 @@ import "truffle/DeployedAddresses.sol"; // コントラクトのテスト用イ�
 import "../contracts/Adoption.sol"; // 
 
 contract TestAdoption {
+    // テスト時のコントラクト実行者のEthereumアドレスを取得
     Adoption adoption = Adoption(DeployedAddresses.Adoption());
 
     // adopt()関数の動作確認
@@ -14,5 +15,16 @@ contract TestAdoption {
         uint expected = 8;
 
         Assert.equal(returnedId, expected, "Adoption of pet ID 8 should be recorded.");
+    }
+
+    // 指定したペットIDにオーナーが存在することを確認
+    function testGetAdopterAddressByPetId() public {
+        // テスト時のコントラクト実行者のEthereuemアドレスを取得
+        address expected = this;
+
+        // ペットIDが8番に格納されているEthereumアドレスを取得
+        address adopter = adoption.adopters(8);
+
+        Assert.equal(adopter, expected, "Owner of pet ID 8 should be recorded.");
     }
 }
